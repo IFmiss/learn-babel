@@ -1,12 +1,20 @@
-var babel = require("@babel/core");
-// import { transform } from "@babel/core";
-// import * as babel from "@babel/core";
 
-const code = `function () {
-  return 1 + 1
-}`
 
-var result = babel.transformSync("code();", {});
-console.log(result)
+// const code = `
+//   function fn<T>(text: T): T {
+//     return text
+//   }
+// `
 
-// https://astexplorer.net/
+const code = `
+  const fn = () => {
+    alert('hello babel')
+  }
+`
+
+const parseObj = require("@babel/parser").parse(code, {
+  // plugins: [
+  //   'typescript'
+  // ]
+})
+console.log(parseObj)

@@ -1,9 +1,15 @@
 "use strict";
 
-var babel = require("@babel/core"); // import { transform } from "@babel/core";
-// import * as babel from "@babel/core";
+// const code = `
+//   function fn<T>(text: T): T {
+//     return text
+//   }
+// `
+const code = "\n  const fn = () => {\n    alert('hello babel')\n  }\n";
 
+const parseObj = require("@babel/parser").parse(code, {// plugins: [
+  //   'typescript'
+  // ]
+});
 
-var code = "function () {\n  return 1 + 1\n}";
-var result = babel.transformSync("code();", {});
-console.log(result); // https://astexplorer.net/
+console.log(parseObj);
